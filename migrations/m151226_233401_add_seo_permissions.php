@@ -1,8 +1,8 @@
 <?php
 
-use yii\db\Migration;
+use artsoft\db\PermissionsMigration;
 
-class m151226_233401_add_seo_permissions extends Migration
+class m151226_233401_add_seo_permissions extends PermissionsMigration
 {
 
     public function beforeUp()
