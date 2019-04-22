@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <div class="row">
                 <div class="col-sm-12 text-right">
-                    <?= GridPageSize::widget(['pjaxId' => 'page-grid-pjax']) ?>
+                    <?= GridPageSize::widget(['pjaxId' => 'seo-grid-pjax']) ?>
                 </div>
             </div>
 
@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'class' => 'artsoft\grid\columns\TitleActionColumn',
                         'controller' => '/seo/default',
                         'title' => function (Seo $model) {
-                            return Html::a($model->url, ['/seo/default/update', 'id' => $model->id], ['data-pjax' => 0]);
+                            return $model->url;
                         },
                         'buttonsTemplate' => '{update} {delete}',
                     ],
