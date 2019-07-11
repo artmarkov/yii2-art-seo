@@ -20,7 +20,7 @@ use artsoft\widgets\LanguagePills;
     ?>
 
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-8">
 
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -43,20 +43,39 @@ use artsoft\widgets\LanguagePills;
             </div>
         </div>
 
-        <div class="col-md-3">
-
+        <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="record-info">
-                        
-                        <?= $form->field($model, 'index')->checkbox() ?>
-
-                        <?= $form->field($model, 'follow')->checkbox() ?>
+                        <div class="form-group clearfix">
+                            <label class="control-label" style="float: left; padding-right: 5px;">
+                                <?=  $model->attributeLabels()['id'] ?>: </label>
+                            <span><?=  $model->id ?></span>
+                        </div>
 
                         <?php if (!$model->isNewRecord): ?>
-                            <?= $form->field($model, 'created_by')->dropDownList(User::getUsersList()) ?>
-                        <?php endif; ?>
+                        <div class="form-group clearfix">
+                            <label class="control-label" style="float: left; padding-right: 5px;">
+                                <?= $model->attributeLabels()['created_at'] ?> :
+                            </label>
+                            <span><?= $model->createdDatetime ?></span>
+                        </div>
 
+                        <div class="form-group clearfix">
+                            <label class="control-label" style="float: left; padding-right: 5px;">
+                                <?= $model->attributeLabels()['updated_at'] ?> :
+                            </label>
+                            <span><?= $model->updatedDatetime ?></span>
+                        </div>
+                        
+                        <div class="form-group clearfix">
+                            <label class="control-label" style="float: left; padding-right: 5px;">
+                                <?= $model->attributeLabels()['updated_by'] ?> :
+                            </label>
+                            <span><?= $model->updatedBy->username ?></span>
+                        </div>                        
+
+                         <?php endif; ?>
                         <div class="form-group">
                             <?php if ($model->isNewRecord): ?>
                                 <?= Html::submitButton(Yii::t('art', 'Create'), ['class' => 'btn btn-primary']) ?>
@@ -72,42 +91,29 @@ use artsoft\widgets\LanguagePills;
                                 ]) ?>
                             <?php endif; ?>
                         </div>
-
                     </div>
                 </div>
             </div>
-
-            <?php if (!$model->isNewRecord): ?>
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="record-info">
+                        
+                        <?= $form->field($model, 'index')->checkbox() ?>
 
-                            <div class="form-group clearfix">
-                                <label class="control-label" style="float: left; padding-right: 5px;">
-                                    <?= $model->attributeLabels()['updated_by'] ?> :
-                                </label>
-                                <span><?= $model->updatedBy->username ?></span>
-                            </div>
+                        <?= $form->field($model, 'follow')->checkbox() ?>
 
-                            <div class="form-group clearfix">
-                                <label class="control-label" style="float: left; padding-right: 5px;">
-                                    <?= $model->attributeLabels()['created_at'] ?> :
-                                </label>
-                                <span><?= $model->createdDatetime ?></span>
-                            </div>
+                        <?php if (!$model->isNewRecord): ?>
+                            <?= $form->field($model, 'created_by')->dropDownList(User::getUsersList()) ?>
+                        <?php endif; ?>
 
-                            <div class="form-group clearfix">
-                                <label class="control-label" style="float: left; padding-right: 5px;">
-                                    <?= $model->attributeLabels()['updated_at'] ?> :
-                                </label>
-                                <span><?= $model->updatedDatetime ?></span>
-                            </div>
+                        
 
                     </div>
                 </div>
             </div>
 
-            <?php endif; ?>
+            
+
         </div>
     </div>
 
